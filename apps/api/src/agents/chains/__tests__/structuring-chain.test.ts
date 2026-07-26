@@ -53,9 +53,9 @@ describe('fallbackStructuring', () => {
   });
 
   it('returns unknown complaint for unrecognised transcript', () => {
-    const result = fallbackStructuring('Patient fell off a bike.');
+    const result = fallbackStructuring('Patient is feeling unwell.');
     expect(result.chiefComplaint).toBe('Undetermined');
-    expect(result.narrative).toBe('Patient fell off a bike.');
+    expect(result.narrative).toBe('Patient is feeling unwell.');
   });
 
   it('FHIR conditions include resourceType field', () => {

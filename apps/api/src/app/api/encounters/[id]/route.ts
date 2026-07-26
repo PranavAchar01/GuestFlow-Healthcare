@@ -68,7 +68,10 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 
   if (vitals && typeof vitals === "object") {
     encounter.structuredData = {
-      ...(encounter.structuredData ?? {}),
+      chiefComplaint: encounter.structuredData?.chiefComplaint ?? "",
+      observations: encounter.structuredData?.observations ?? [],
+      conditions: encounter.structuredData?.conditions ?? [],
+      narrative: encounter.structuredData?.narrative ?? "",
       vitals: { ...(encounter.structuredData?.vitals ?? {}), ...vitals },
     };
     const audit = createAuditEntry(
